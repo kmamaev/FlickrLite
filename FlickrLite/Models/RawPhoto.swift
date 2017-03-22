@@ -3,17 +3,19 @@ import ObjectMapper
 
 struct RawPhoto : Mappable {
 
-    var id: Int?
+    var id: String!
     var farm: Int?
-    var isFamily: Int?
-    var isPublic: Int?
+    var isFamily: String?
+    var isPublic: String?
     var owner: String?
     var secret: String?
-    var server: Int?
+    var server: String?
     var title: String?
 
     init?(map: Map) {
-
+        if map.JSON["id"] == nil {
+            return nil
+        }
     }
 
     mutating func mapping(map: Map) {
