@@ -8,6 +8,8 @@ class PhotosBrowserVC: UIViewController, UICollectionViewDataSource, UICollectio
 
     @IBOutlet var collectionView: UICollectionView!
 
+    var query = "cats"
+
     var photosService: PhotosService?
     
     var photoDetailsVC: NYTPhotosViewController?
@@ -19,12 +21,17 @@ class PhotosBrowserVC: UIViewController, UICollectionViewDataSource, UICollectio
         super.viewDidLoad()
         
         self.configureCollectionView()
+        self.configureNavigationBar()
     }
     
     private func configureCollectionView() {
         let nibName = NSStringFromClass(PhotosBrowserCell.self).characters.split(separator: ".").map(String.init).last!
         let nib = UINib(nibName: nibName, bundle: nil)
         self.collectionView.register(nib, forCellWithReuseIdentifier: PhotosBrowserVC.reuseId)
+    }
+    
+    private func configureNavigationBar() {
+        self.navigationItem.title = self.query
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -41,7 +48,7 @@ class PhotosBrowserVC: UIViewController, UICollectionViewDataSource, UICollectio
             // TODO: handle error
         }
         
-        _ = self.photosService?.searchPhotos(query: "cats", success: successHandler, failure: failureHandler)
+        _ = self.photosService?.searchPhotos(query: query, success: successHandler, failure: failureHandler)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

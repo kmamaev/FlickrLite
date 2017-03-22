@@ -27,7 +27,7 @@
         <!--Photos BrowserVC-->
         <scene sceneID="wvv-u0-Abg">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="wOU-fe-BTf" customClass="PhotosBrowserVC" customModule="FlickrLite" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="wOU-fe-BTf" customClass="PhotosBrowserVC" customModule="FlickrLite" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="zdW-HR-i0L"/>
                         <viewControllerLayoutGuide type="bottom" id="b9m-18-mBh"/>
@@ -37,7 +37,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="saC-1D-CUX">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="2" minimumInteritemSpacing="2" id="Hho-JH-9Hg">
                                     <size key="itemSize" width="50" height="50"/>
@@ -63,9 +63,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="saC-1D-CUX" firstAttribute="top" secondItem="zdW-HR-i0L" secondAttribute="bottom" id="30Q-oc-fLq"/>
                             <constraint firstItem="saC-1D-CUX" firstAttribute="leading" secondItem="bH7-Kx-Rgj" secondAttribute="leading" id="SbH-Lp-97W"/>
                             <constraint firstAttribute="trailing" secondItem="saC-1D-CUX" secondAttribute="trailing" id="WqY-Rg-qxf"/>
+                            <constraint firstItem="saC-1D-CUX" firstAttribute="top" secondItem="bH7-Kx-Rgj" secondAttribute="top" id="cpN-k2-k83"/>
                             <constraint firstItem="b9m-18-mBh" firstAttribute="top" secondItem="saC-1D-CUX" secondAttribute="bottom" id="svU-Dr-xuN"/>
                         </constraints>
                     </view>
