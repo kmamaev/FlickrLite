@@ -5,5 +5,6 @@ target 'FlickrLite' do
   pod 'AlamofireImage', '~> 3.2'
   pod 'ObjectMapper', '~> 2.2'
   pod 'NYTPhotoViewer', '~> 1.2'
+  pod 'RealmSwift', '~> 2.4'
 
 end
