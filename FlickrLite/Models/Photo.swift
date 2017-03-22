@@ -20,5 +20,12 @@ class Photo: NSObject, NYTPhoto {
         self.url = PhotosRoutines.url(id: rawPhoto.id, serverId: rawPhoto.server, farm: rawPhoto.farm, secret: rawPhoto.secret)
         self.title = rawPhoto.title
     }
+    
+    init(realmPhoto: RealmPhoto) {
+        if realmPhoto.urlString != nil {
+            self.url = URL(string: realmPhoto.urlString!)
+        }
+        self.title = realmPhoto.title
+    }
 
 }

@@ -13,23 +13,32 @@ class PhotosService {
     var photos: [Photo] = []
     
     private let apiService: APIService
+    private let storageService: StorageService
     
-    init(apiService: APIService) {
+    init(apiService: APIService, storageService: StorageService) {
         self.apiService = apiService
+        self.storageService = storageService
+        self.photos = self.storageService.storedPhotos()
     }
     
     func searchPhotos(query: String, pageIndex: Int? = nil, success: ((CountableRange<Int>) -> ())?, failure: ((Error) -> ())? = nil) -> DataRequest? {
         
+        let isNewSearch = pageIndex == nil
+        
         self.isLoading = true
         self.query = query
         self.pageIndex = pageIndex ?? 1
-        if pageIndex == nil {
-            self.photos = []
+        if isNewSearch {
             self.allPhotosLoaded = false
         }
         
         let successHandler = { [unowned self] (response: SearchPhotosResponse) -> () in
             if let rawPhotos = response.rawPhotos {
+                if isNewSearch {
+                    self.storageService.clearPhotos()
+                    self.photos.removeAll()
+                }
+            
                 var loadedPhotos: [Photo] = []
                 for rawPhoto in rawPhotos {
                     let photo = Photo(rawPhoto: rawPhoto)
@@ -41,7 +50,10 @@ class PhotosService {
                 if loadedPhotos.count < PhotosService.itemsPerPage {
                     self.allPhotosLoaded = true
                 }
+                
                 self.photos.append(contentsOf: loadedPhotos)
+                self.storageService.savePhotos(loadedPhotos)
+                
                 success?(range)
             }
             self.isLoading = false

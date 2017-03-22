@@ -1,4 +1,5 @@
 import UIKit
+import RealmSwift
 
 
 @UIApplicationMain
@@ -8,8 +9,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
     
+        print(Realm.Configuration.defaultConfiguration.fileURL!)
+    
         let apiService = APIService()
-        let photosService = PhotosService(apiService: apiService)
+        let storageService = StorageService()
+        let photosService = PhotosService(apiService: apiService, storageService: storageService)
         
         let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
         

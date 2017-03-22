@@ -11,6 +11,7 @@
 		B50644AB1E81598A00E1A115 /* APITask.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50644AA1E81598A00E1A115 /* APITask.swift */; };
 		B50644AE1E81826900E1A115 /* SearchPhotosResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50644AD1E81826900E1A115 /* SearchPhotosResponse.swift */; };
 		B50644B11E81830600E1A115 /* RawPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50644B01E81830600E1A115 /* RawPhoto.swift */; };
+		B51C1B271E8331D300DA8F98 /* RealmPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51C1B261E8331D300DA8F98 /* RealmPhoto.swift */; };
 		B523251B1E8105DC00FF4B02 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B523251A1E8105DC00FF4B02 /* AppDelegate.swift */; };
 		B52325221E8105DC00FF4B02 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B52325211E8105DC00FF4B02 /* Assets.xcassets */; };
 		B52325251E8105DC00FF4B02 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B52325231E8105DC00FF4B02 /* LaunchScreen.storyboard */; };
@@ -23,6 +24,8 @@
 		B576D9CC1E829EF700054041 /* PhotosBrowserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B576D9CA1E829EF700054041 /* PhotosBrowserCell.swift */; };
 		B576D9CD1E829EF700054041 /* PhotosBrowserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B576D9CB1E829EF700054041 /* PhotosBrowserCell.xib */; };
 		B59375641E83106800E98E4D /* IndexPathsRoutines.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59375631E83106800E98E4D /* IndexPathsRoutines.swift */; };
+		B59375691E832F5100E98E4D /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59375681E832F5100E98E4D /* StorageService.swift */; };
+		B593756C1E832F9A00E98E4D /* RealmApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = B593756B1E832F9A00E98E4D /* RealmApplication.swift */; };
 		FF7AA40EC3CA13AE1BA3DDC1 /* Pods_FlickrLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7E8F84308102CCE2535B325 /* Pods_FlickrLite.framework */; };
 /* End PBXBuildFile section */
 
@@ -33,6 +36,7 @@
 		B50644AA1E81598A00E1A115 /* APITask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APITask.swift; sourceTree = "<group>"; };
 		B50644AD1E81826900E1A115 /* SearchPhotosResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchPhotosResponse.swift; sourceTree = "<group>"; };
 		B50644B01E81830600E1A115 /* RawPhoto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RawPhoto.swift; sourceTree = "<group>"; };
+		B51C1B261E8331D300DA8F98 /* RealmPhoto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmPhoto.swift; sourceTree = "<group>"; };
 		B52325171E8105DC00FF4B02 /* FlickrLite.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlickrLite.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B523251A1E8105DC00FF4B02 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B52325211E8105DC00FF4B02 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -48,6 +52,8 @@
 		B576D9CB1E829EF700054041 /* PhotosBrowserCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotosBrowserCell.xib; sourceTree = "<group>"; };
 		B593755B1E82C04200E98E4D /* FlickrLite-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FlickrLite-Bridging-Header.h"; sourceTree = "<group>"; };
 		B59375631E83106800E98E4D /* IndexPathsRoutines.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndexPathsRoutines.swift; sourceTree = "<group>"; };
+		B59375681E832F5100E98E4D /* StorageService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageService.swift; sourceTree = "<group>"; };
+		B593756B1E832F9A00E98E4D /* RealmApplication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmApplication.swift; sourceTree = "<group>"; };
 		F7E8F84308102CCE2535B325 /* Pods_FlickrLite.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FlickrLite.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -74,6 +80,7 @@
 		B50644A41E81149200E1A115 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				B59375671E832F5100E98E4D /* StorageService */,
 				B50644A71E81595D00E1A115 /* APIService */,
 				B576D9BF1E8276E600054041 /* PhotosService.swift */,
 			);
@@ -176,6 +183,24 @@
 				B576D9CB1E829EF700054041 /* PhotosBrowserCell.xib */,
 			);
 			path = PhotoBrowser;
+			sourceTree = "<group>";
+		};
+		B59375671E832F5100E98E4D /* StorageService */ = {
+			isa = PBXGroup;
+			children = (
+				B593756A1E832F7A00E98E4D /* RealmObjects */,
+				B59375681E832F5100E98E4D /* StorageService.swift */,
+			);
+			path = StorageService;
+			sourceTree = "<group>";
+		};
+		B593756A1E832F7A00E98E4D /* RealmObjects */ = {
+			isa = PBXGroup;
+			children = (
+				B593756B1E832F9A00E98E4D /* RealmApplication.swift */,
+				B51C1B261E8331D300DA8F98 /* RealmPhoto.swift */,
+			);
+			path = RealmObjects;
 			sourceTree = "<group>";
 		};
 		DE125C9EE2B4D5197DBA541A /* Pods */ = {
@@ -320,10 +345,13 @@
 				B576D9BE1E8276A400054041 /* Photo.swift in Sources */,
 				B50644A91E81595D00E1A115 /* APIService.swift in Sources */,
 				B576D9C91E829ECB00054041 /* PhotosBrowserVC.swift in Sources */,
+				B593756C1E832F9A00E98E4D /* RealmApplication.swift in Sources */,
 				B59375641E83106800E98E4D /* IndexPathsRoutines.swift in Sources */,
 				B523251B1E8105DC00FF4B02 /* AppDelegate.swift in Sources */,
 				B50644B11E81830600E1A115 /* RawPhoto.swift in Sources */,
+				B51C1B271E8331D300DA8F98 /* RealmPhoto.swift in Sources */,
 				B50644AE1E81826900E1A115 /* SearchPhotosResponse.swift in Sources */,
+				B59375691E832F5100E98E4D /* StorageService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
