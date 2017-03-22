@@ -59,11 +59,14 @@ class APIService: NSObject {
         return logicError
     }
 
-    func searchPhotos(query: String, success: ((SearchPhotosResponse) -> ())?, failure: ((Error) -> ())? = nil) -> DataRequest {
+    func searchPhotos(query: String, pageIndex: Int? = nil, success: ((SearchPhotosResponse) -> ())?, failure: ((Error) -> ())? = nil) -> DataRequest {
         
-        let parameters: [String: Any] = [
+        var parameters: [String: Any] = [
                 "text": query,
             ]
+        if pageIndex != nil {
+            parameters["page"] = pageIndex!
+        }
         
         let apiTask = APITask<SearchPhotosResponse>()
         apiTask.apiMethod = "flickr.photos.search"

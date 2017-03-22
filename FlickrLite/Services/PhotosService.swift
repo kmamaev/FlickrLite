@@ -3,27 +3,67 @@ import Alamofire
 
 class PhotosService {
     
-    let apiService: APIService
+    static let itemsPerPage = 100
+    
+    var isLoading = false
+    var allPhotosLoaded = false
+    var query: String?
+    var pageIndex: Int?
+    
+    var photos: [Photo] = []
+    
+    private let apiService: APIService
     
     init(apiService: APIService) {
         self.apiService = apiService
     }
     
-    func searchPhotos(query: String, success: (([Photo]) -> ())?, failure: ((Error) -> ())? = nil) -> DataRequest? {
+    func searchPhotos(query: String, pageIndex: Int? = nil, success: ((CountableRange<Int>) -> ())?, failure: ((Error) -> ())? = nil) -> DataRequest? {
         
-        func serverRequestSuccessHandler(response: SearchPhotosResponse) -> () {
-            if let rawPhotos = response.rawPhotos {
-                var photos: [Photo] = []
-                for rawPhoto in rawPhotos {
-                    let photo = Photo(rawPhoto: rawPhoto)
-                    photos.append(photo)
-                }
-                success?(photos)
-            }
+        self.isLoading = true
+        self.query = query
+        self.pageIndex = pageIndex ?? 1
+        if pageIndex == nil {
+            self.photos = []
+            self.allPhotosLoaded = false
         }
         
-        return self.apiService.searchPhotos(query: query, success: serverRequestSuccessHandler, failure: failure)
+        let successHandler = { [unowned self] (response: SearchPhotosResponse) -> () in
+            if let rawPhotos = response.rawPhotos {
+                var loadedPhotos: [Photo] = []
+                for rawPhoto in rawPhotos {
+                    let photo = Photo(rawPhoto: rawPhoto)
+                    loadedPhotos.append(photo)
+                }
+                let startIndex = self.photos.count
+                let endIndex = startIndex + loadedPhotos.count
+                let range = startIndex..<endIndex
+                if loadedPhotos.count < PhotosService.itemsPerPage {
+                    self.allPhotosLoaded = true
+                }
+                self.photos.append(contentsOf: loadedPhotos)
+                success?(range)
+            }
+            self.isLoading = false
+        }
         
+        let failureHandler = { [unowned self] (error: Error) -> () in
+            self.isLoading = false
+            failure?(error)
+        }
+        
+        return self.apiService.searchPhotos(query: query, pageIndex: self.pageIndex, success: successHandler, failure: failureHandler)
+        
+    }
+    
+    func loadNextPageIfNeeded(success: ((CountableRange<Int>) -> ())?, failure: ((Error) -> ())? = nil) -> DataRequest? {
+        guard (self.isLoading == false) && (self.allPhotosLoaded == false) else {
+            return nil
+        }
+    
+        let nextPageIndex = self.pageIndex! + 1
+        print("loading next page index \(nextPageIndex) ...")
+        return self.searchPhotos(query: self.query!, pageIndex: nextPageIndex, success: success, failure: failure)
     }
     
     func loadImage(photo: Photo, success: (() -> ())?, failure: ((Error) -> ())? = nil) -> DataRequest? {

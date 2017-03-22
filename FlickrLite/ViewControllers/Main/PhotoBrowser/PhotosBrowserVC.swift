@@ -10,9 +10,10 @@ class PhotosBrowserVC: UIViewController, UICollectionViewDataSource, UICollectio
 
     var photosService: PhotosService?
     
-    var photos: [Photo] = []
-    
     var photoDetailsVC: NYTPhotosViewController?
+    
+    var updatingCollection = false
+    var previousContentHeight: CGFloat = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,8 +31,7 @@ class PhotosBrowserVC: UIViewController, UICollectionViewDataSource, UICollectio
         assert(self.photosService != nil)
         
         let successHandler = {
-            [weak self] (photos: [Photo]) -> () in
-            self?.photos = photos
+            [weak self] (_: CountableRange<Int>) -> () in
             self?.collectionView.reloadData()
         }
         
@@ -45,13 +45,13 @@ class PhotosBrowserVC: UIViewController, UICollectionViewDataSource, UICollectio
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.photos.count
+        return self.photosService!.photos.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotosBrowserVC.reuseId, for: indexPath) as! PhotosBrowserCell
         
-        let photo = self.photos[indexPath.row]
+        let photo = self.photosService!.photos[indexPath.row]
         cell.configure(photo: photo, photosService: self.photosService!)
         
         return cell
@@ -73,8 +73,8 @@ class PhotosBrowserVC: UIViewController, UICollectionViewDataSource, UICollectio
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let photo = self.photos[indexPath.row]
-        self.photoDetailsVC = NYTPhotosViewController(photos: self.photos, initialPhoto: photo, delegate: self)
+        let photo = self.photosService!.photos[indexPath.row]
+        self.photoDetailsVC = NYTPhotosViewController(photos: self.photosService!.photos, initialPhoto: photo, delegate: self)
         self.present(self.photoDetailsVC!, animated: true, completion: nil)
     }
     
@@ -88,12 +88,43 @@ class PhotosBrowserVC: UIViewController, UICollectionViewDataSource, UICollectio
     }
     
     func photosViewController(_ photosViewController: NYTPhotosViewController, referenceViewFor photo: NYTPhoto) -> UIView? {
-        if let index = self.photos.index(of: photo as! Photo) {
+        if let index = self.photosService!.photos.index(of: photo as! Photo) {
             let indexPath = IndexPath(row: index, section: 0)
             let cell = self.collectionView.cellForItem(at: indexPath) as? PhotosBrowserCell
             return cell?.imageView
         }
         return nil
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if self.updatingCollection == true {
+            if scrollView.contentSize.height > self.previousContentHeight {
+                self.updatingCollection = false
+            }
+        }
+    
+        let distanceToEndOfList = scrollView.contentSize.height - scrollView.contentOffset.y - scrollView.bounds.height
+        
+        if (distanceToEndOfList < 200) && (self.updatingCollection == false) {
+            self.updatingCollection = true
+            self.previousContentHeight = scrollView.contentSize.height
+            self.loadNextPage()
+        }
+    }
+    
+    private func loadNextPage() {
+        let successHandler = {
+            [weak self] (range: CountableRange<Int>) -> () in
+            self?.collectionView.insertItems(at: IndexPath.indexPaths(range: range))
+        }
+        
+        let failureHandler = {
+            (error: Error) -> () in
+            print(error)
+            // TODO: handle error
+        }
+        
+        _ = self.photosService?.loadNextPageIfNeeded(success: successHandler, failure: failureHandler)
     }
     
 }

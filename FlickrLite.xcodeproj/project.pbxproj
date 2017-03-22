@@ -22,6 +22,7 @@
 		B576D9C91E829ECB00054041 /* PhotosBrowserVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B576D9C71E829ECB00054041 /* PhotosBrowserVC.swift */; };
 		B576D9CC1E829EF700054041 /* PhotosBrowserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B576D9CA1E829EF700054041 /* PhotosBrowserCell.swift */; };
 		B576D9CD1E829EF700054041 /* PhotosBrowserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B576D9CB1E829EF700054041 /* PhotosBrowserCell.xib */; };
+		B59375641E83106800E98E4D /* IndexPathsRoutines.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59375631E83106800E98E4D /* IndexPathsRoutines.swift */; };
 		FF7AA40EC3CA13AE1BA3DDC1 /* Pods_FlickrLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7E8F84308102CCE2535B325 /* Pods_FlickrLite.framework */; };
 /* End PBXBuildFile section */
 
@@ -46,6 +47,7 @@
 		B576D9CA1E829EF700054041 /* PhotosBrowserCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosBrowserCell.swift; sourceTree = "<group>"; };
 		B576D9CB1E829EF700054041 /* PhotosBrowserCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotosBrowserCell.xib; sourceTree = "<group>"; };
 		B593755B1E82C04200E98E4D /* FlickrLite-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FlickrLite-Bridging-Header.h"; sourceTree = "<group>"; };
+		B59375631E83106800E98E4D /* IndexPathsRoutines.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndexPathsRoutines.swift; sourceTree = "<group>"; };
 		F7E8F84308102CCE2535B325 /* Pods_FlickrLite.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FlickrLite.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -152,6 +154,7 @@
 			isa = PBXGroup;
 			children = (
 				B576D9C21E8278C400054041 /* PhotosRoutines.swift */,
+				B59375631E83106800E98E4D /* IndexPathsRoutines.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -317,6 +320,7 @@
 				B576D9BE1E8276A400054041 /* Photo.swift in Sources */,
 				B50644A91E81595D00E1A115 /* APIService.swift in Sources */,
 				B576D9C91E829ECB00054041 /* PhotosBrowserVC.swift in Sources */,
+				B59375641E83106800E98E4D /* IndexPathsRoutines.swift in Sources */,
 				B523251B1E8105DC00FF4B02 /* AppDelegate.swift in Sources */,
 				B50644B11E81830600E1A115 /* RawPhoto.swift in Sources */,
 				B50644AE1E81826900E1A115 /* SearchPhotosResponse.swift in Sources */,
