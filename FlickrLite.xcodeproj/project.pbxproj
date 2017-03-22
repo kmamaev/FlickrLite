@@ -17,6 +17,9 @@
 		B52325251E8105DC00FF4B02 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B52325231E8105DC00FF4B02 /* LaunchScreen.storyboard */; };
 		B523252E1E81064F00FF4B02 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B523252D1E81064F00FF4B02 /* ViewController.swift */; };
 		B576D9BA1E825A8900054041 /* APIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B576D9B91E825A8900054041 /* APIResponse.swift */; };
+		B576D9BE1E8276A400054041 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B576D9BD1E8276A400054041 /* Photo.swift */; };
+		B576D9C01E8276E600054041 /* PhotosService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B576D9BF1E8276E600054041 /* PhotosService.swift */; };
+		B576D9C31E8278C400054041 /* PhotosRoutines.swift in Sources */ = {isa = PBXBuildFile; fileRef = B576D9C21E8278C400054041 /* PhotosRoutines.swift */; };
 		FF7AA40EC3CA13AE1BA3DDC1 /* Pods_FlickrLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7E8F84308102CCE2535B325 /* Pods_FlickrLite.framework */; };
 /* End PBXBuildFile section */
 
@@ -35,6 +38,9 @@
 		B52325261E8105DC00FF4B02 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B523252D1E81064F00FF4B02 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		B576D9B91E825A8900054041 /* APIResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIResponse.swift; sourceTree = "<group>"; };
+		B576D9BD1E8276A400054041 /* Photo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
+		B576D9BF1E8276E600054041 /* PhotosService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosService.swift; sourceTree = "<group>"; };
+		B576D9C21E8278C400054041 /* PhotosRoutines.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosRoutines.swift; sourceTree = "<group>"; };
 		F7E8F84308102CCE2535B325 /* Pods_FlickrLite.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FlickrLite.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -62,6 +68,7 @@
 			isa = PBXGroup;
 			children = (
 				B50644A71E81595D00E1A115 /* APIService */,
+				B576D9BF1E8276E600054041 /* PhotosService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -89,6 +96,7 @@
 			isa = PBXGroup;
 			children = (
 				B50644B01E81830600E1A115 /* RawPhoto.swift */,
+				B576D9BD1E8276A400054041 /* Photo.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -114,6 +122,7 @@
 		B52325191E8105DC00FF4B02 /* FlickrLite */ = {
 			isa = PBXGroup;
 			children = (
+				B576D9C11E8278B200054041 /* Utils */,
 				B50644AF1E8182F000E1A115 /* Models */,
 				B50644A41E81149200E1A115 /* Services */,
 				B523252C1E81064F00FF4B02 /* ViewControllers */,
@@ -132,6 +141,14 @@
 				B523252D1E81064F00FF4B02 /* ViewController.swift */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		B576D9C11E8278B200054041 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				B576D9C21E8278C400054041 /* PhotosRoutines.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		DE125C9EE2B4D5197DBA541A /* Pods */ = {
@@ -267,8 +284,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				B576D9BA1E825A8900054041 /* APIResponse.swift in Sources */,
+				B576D9C01E8276E600054041 /* PhotosService.swift in Sources */,
+				B576D9C31E8278C400054041 /* PhotosRoutines.swift in Sources */,
 				B523252E1E81064F00FF4B02 /* ViewController.swift in Sources */,
 				B50644AB1E81598A00E1A115 /* APITask.swift in Sources */,
+				B576D9BE1E8276A400054041 /* Photo.swift in Sources */,
 				B50644A91E81595D00E1A115 /* APIService.swift in Sources */,
 				B523251B1E8105DC00FF4B02 /* AppDelegate.swift in Sources */,
 				B50644B11E81830600E1A115 /* RawPhoto.swift in Sources */,
