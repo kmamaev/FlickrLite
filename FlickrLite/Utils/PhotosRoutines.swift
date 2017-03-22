@@ -40,14 +40,30 @@ class PhotosRoutines {
 /// k	large 2048, 2048 on longest side†
 /// o	original image, either a jpg, gif or png, depending on source format
 
+    static let sizeChar = { () -> String in 
+        let screenWidth = UIScreen.main.bounds.size.width
+        let scale = UIScreen.main.scale
+        let effectiveWidth = screenWidth * scale
+        
+        switch effectiveWidth {
+            case 640..<800:
+                return "z"
+            case 800..<1024:
+                return "c"
+            case 1024..<100000:
+                return "b"
+            default:
+                return "z"
+        }
+    }()
+
     static func url(id: String?, serverId: String?, farm: Int?, secret: String?) -> URL? {
         guard (id != nil) && (serverId != nil) && (farm != nil) && (secret != nil) else {
             return nil
         }
         
-        let urlString = "https://farm\(farm!).\(PhotosRoutines.hostName)/\(serverId!)/\(id!)_\(secret!)_z.jpg"
+        let urlString = "https://farm\(farm!).\(PhotosRoutines.hostName)/\(serverId!)/\(id!)_\(secret!)_\(self.sizeChar).jpg"
         let url = URL(string: urlString)
-        // TODO: choose proper scale
         
         return url
     }
