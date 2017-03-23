@@ -9,7 +9,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
     
+#if DEBUG
         print(Realm.Configuration.defaultConfiguration.fileURL!)
+#endif
     
         let apiService = APIService()
         let storageService = StorageService()

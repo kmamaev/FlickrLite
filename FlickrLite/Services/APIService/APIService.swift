@@ -15,7 +15,9 @@ class APIService: NSObject {
         
         let request = Alamofire.request(APIService.baseURLString, method: apiTask.httpMethod, parameters: apiTask.parameters).responseJSON
             { response in
+#if DEBUG
                 print(response)
+#endif
                 switch response.result {
                     case .success(let value):
                         if let apiResponse = Mapper<APIResponse>().map(JSONObject: value) {
