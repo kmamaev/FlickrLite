@@ -43,9 +43,8 @@ class PhotosBrowserVC: UIViewController, UICollectionViewDataSource, UICollectio
         }
         
         let failureHandler = {
-            (error: Error) -> () in
-            print(error)
-            // TODO: handle error
+            [weak self] (error: Error) -> () in
+            self?.showErrorLoadingPhotosAlert()
         }
         
         _ = self.photosService?.searchPhotos(query: query, success: successHandler, failure: failureHandler)
@@ -126,12 +125,15 @@ class PhotosBrowserVC: UIViewController, UICollectionViewDataSource, UICollectio
         }
         
         let failureHandler = {
-            (error: Error) -> () in
-            print(error)
-            // TODO: handle error
+            [weak self] (error: Error) -> () in
+            self?.showErrorLoadingPhotosAlert()
         }
         
         _ = self.photosService?.loadNextPageIfNeeded(success: successHandler, failure: failureHandler)
+    }
+    
+    private func showErrorLoadingPhotosAlert() {
+        AlertRoutines.showAlert(title: "Error", message: "Unable to load photos", onViewController: self)
     }
     
 }

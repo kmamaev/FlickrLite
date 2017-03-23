@@ -26,6 +26,7 @@
 		B59375641E83106800E98E4D /* IndexPathsRoutines.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59375631E83106800E98E4D /* IndexPathsRoutines.swift */; };
 		B59375691E832F5100E98E4D /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59375681E832F5100E98E4D /* StorageService.swift */; };
 		B593756C1E832F9A00E98E4D /* RealmApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = B593756B1E832F9A00E98E4D /* RealmApplication.swift */; };
+		B5CECFE51E835C8A007D9C05 /* AlertRoutines.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CECFE41E835C8A007D9C05 /* AlertRoutines.swift */; };
 		FF7AA40EC3CA13AE1BA3DDC1 /* Pods_FlickrLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7E8F84308102CCE2535B325 /* Pods_FlickrLite.framework */; };
 /* End PBXBuildFile section */
 
@@ -54,6 +55,7 @@
 		B59375631E83106800E98E4D /* IndexPathsRoutines.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndexPathsRoutines.swift; sourceTree = "<group>"; };
 		B59375681E832F5100E98E4D /* StorageService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageService.swift; sourceTree = "<group>"; };
 		B593756B1E832F9A00E98E4D /* RealmApplication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmApplication.swift; sourceTree = "<group>"; };
+		B5CECFE41E835C8A007D9C05 /* AlertRoutines.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertRoutines.swift; sourceTree = "<group>"; };
 		F7E8F84308102CCE2535B325 /* Pods_FlickrLite.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FlickrLite.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -162,6 +164,7 @@
 			children = (
 				B576D9C21E8278C400054041 /* PhotosRoutines.swift */,
 				B59375631E83106800E98E4D /* IndexPathsRoutines.swift */,
+				B5CECFE41E835C8A007D9C05 /* AlertRoutines.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -352,6 +355,7 @@
 				B51C1B271E8331D300DA8F98 /* RealmPhoto.swift in Sources */,
 				B50644AE1E81826900E1A115 /* SearchPhotosResponse.swift in Sources */,
 				B59375691E832F5100E98E4D /* StorageService.swift in Sources */,
+				B5CECFE51E835C8A007D9C05 /* AlertRoutines.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
